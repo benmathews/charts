@@ -10,5 +10,10 @@ metadata:
     release: {{ .Release.Name }}
   name: {{ template "prometheus.server.fullname" . }}
 data:
+          {{- if or .Values.alertmanager.enabled .Values.server.alertmanagerURL }}
+          ## I can't find this in the config. I'll figure it out later. This key is madeup.
+  alertmanager_config:
+            url: {{- if .Values.alertmanager.enabled }}http://{{ template "prometheus.alertmanager.fullname" . }}:{{ .Values.alertmanager.service.servicePort }}{{ .Values.alertmanager.prefixURL }}{{- else }}{{ .Values.server.alertmanagerURL }}{{- end }}
+          {{- end }}
 {{ toYaml .Values.serverFiles | indent 2 }}
 {{- end }}
