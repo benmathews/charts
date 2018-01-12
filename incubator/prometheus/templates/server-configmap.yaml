@@ -15,5 +15,11 @@ data:
   alertmanager_config:
             url: {{- if .Values.alertmanager.enabled }}http://{{ template "prometheus.alertmanager.fullname" . }}:{{ .Values.alertmanager.service.servicePort }}{{ .Values.alertmanager.prefixURL }}{{- else }}{{ .Values.server.alertmanagerURL }}{{- end }}
           {{- end }}
+
+          # TODO
+          #  {{- if .Values.server.retention }}
+          #   - --storage.local.retention={{ .Values.server.retention }}
+          # {{- end }}
+            # - --storage.local.path={{ .Values.server.persistentVolume.mountPath }}
 {{ toYaml .Values.serverFiles | indent 2 }}
 {{- end }}
