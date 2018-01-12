@@ -17,7 +17,7 @@ alertmanager:
   ##
   image:
     repository: prom/alertmanager
-    tag: v0.9.1
+    tag: v0.13.0
     pullPolicy: IfNotPresent
 
   ## Additional alertmanager container arguments
@@ -191,7 +191,7 @@ kubeStateMetrics:
   ##
   image:
     repository: k8s.gcr.io/kube-state-metrics
-    tag: v1.1.0-rc.0
+    tag: v1.1.0
     pullPolicy: IfNotPresent
 
   ## kube-state-metrics container arguments
@@ -253,7 +253,7 @@ nodeExporter:
   ##
   image:
     repository: prom/node-exporter
-    tag: v0.15.0
+    tag: v0.15.2
     pullPolicy: IfNotPresent
 
   ## Custom Update Strategy
@@ -332,7 +332,7 @@ server:
   ##
   image:
     repository: prom/prometheus
-    tag: v1.8.1
+    tag: v2.0.0
     pullPolicy: IfNotPresent
 
   ## (optional) alertmanager URL
